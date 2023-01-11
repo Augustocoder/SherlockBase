@@ -1,4 +1,6 @@
- É uma ferrameta que consulta CNPJ e CPF, retornado as informações empresariais ou físicas corretamente. Uma ferrameta excelente para você e o seu negócio!
+# SherlockBase
+
+É uma ferrameta que consulta CNPJ e CPF, retornado as informações empresariais ou físicas corretamente. Uma ferrameta excelente para você e o seu negócio!
 
 ## Instalação
 
@@ -22,4 +24,8 @@ Não, essa ferramenta é totalmente gratuita e funcional, para que você possa a
 ## Stack utilizada
 
 **Front-end:** HTML, CSS e JavaScript.
+
 **Back-end:** PHP.
+#
+![Logo](https://user-images.githubusercontent.com/121616883/211920003-3de2fe7e-ef41-42cc-b98c-9d6cfead41eb.png)
+
