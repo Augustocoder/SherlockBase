@@ -1,4 +1,4 @@
-# SherlockBase (25/02/2023 - Manutenção)
+# SherlockBase ATUALIZADO!
 
 É uma ferrameta que consulta CNPJ e CPF, retornado as informações empresariais ou físicas corretamente. Uma ferrameta excelente para você e o seu negócio!
 
@@ -8,7 +8,7 @@ A instalação não é complicada, você apenas precisa de um Web Server, recome
 XAMPP que é bem mais fácil de configurar e upar os arquivos no HTDOCS.    
 ## Funcionalidades da Consulta
 
-- Consulta de CPF: Retorna o CPF, Nome Completo, Nome da Mãe, Data de Nascimento e CNS.
+- Consulta de CPF: Retorna o CPF, Nome Completo, Nome da Mãe, Data de Nascimento, Renda, E-mail e o score do e-mail.
 - Consulta de CNPJ: Retorna o CNPJ, Razão Social, Capital Social, Situação da Empresa, Sócios da Empresa, Estado, E-mail e Telefone
 
 ## Perguntas?
