@@ -1,112 +1,113 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
 }
 
 header {
-    background-color: #333;
-    color: white;
-    padding: 1rem;
+  background-color: #333;
+  color: white;
+  padding: 1rem;
 }
 
 header h1 {
-    margin: 0;
+  margin: 0;
 }
 
 h3 {
-    font-size: 1.5rem;
-    color: #333;
-    margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 1rem;
 }
 
 main {
-    max-width: 80%;
-    margin: auto;
-    padding: 2rem 0;
+  max-width: 80%;
+  margin: auto;
+  padding: 2rem 0;
 }
 
 form {
-    background-color: white;
-    padding: 2rem;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+  background-color: white;
+  padding: 2rem;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .result {
-    background-color: white;
-    padding: 2rem;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
-    margin-top: 2rem;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 2rem;
+  word-wrap: break-word;
 }
 
 .result p {
-    font-size: 1.5rem;
-    color: #333;
-    margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 1rem;
 }
 
 form label {
-    display: block;
-    margin-bottom: .5rem;
+  display: block;
+  margin-bottom: 0.5rem;
 }
 
 form input[type="number"] {
-    width: 100%;
-    padding: .5rem;
-    margin-bottom: 1rem;
-    box-sizing: border-box;
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  box-sizing: border-box;
 }
 
 form button[type="submit"] {
-    background-color: #333;
-    color: white;
-    border: none;
-    padding: .5rem 1rem;
-    cursor: pointer;
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
 }
 
 form button[type="submit"]:hover {
-    background-color: #555;
+  background-color: #555;
 }
 
 @media screen and (max-width: 768px) {
-    main {
-        padding: 1rem;
-    }
+  main {
+    padding: 1rem;
+  }
 
-    form {
-        padding: 1rem;
-    }
+  form {
+    padding: 1rem;
+  }
 
-    .result {
-        padding: 1rem;
-    }
+  .result {
+    padding: 1rem;
+  }
 }
 
 @media screen and (max-width: 480px) {
-    header h1 {
-        font-size: 1.5rem;
-    }
+  header h1 {
+    font-size: 1.5rem;
+  }
 
-    h3 {
-        font-size: 1.25rem;
-    }
+  h3 {
+    font-size: 1.25rem;
+  }
 
-    main {
-        max-width: 90%;
-    }
+  main {
+    max-width: 90%;
+  }
 
-    form input[type="number"] {
-        font-size: 1.25rem;
-    }
+  form input[type="number"] {
+    font-size: 1.25rem;
+  }
 
-    form button[type="submit"] {
-        font-size: 1.25rem;
-        padding: .5rem .75rem;
-    }
+  form button[type="submit"] {
+    font-size: 1.25rem;
+    padding: 0.5rem 0.75rem;
+  }
 
-    .result p {
-        font-size: 1.25rem;
-    }
+  .result p {
+    font-size: 1.25rem;
+  }
 }
