@@ -1,6 +1,7 @@
 # SherlockBase (API NOVA EM DESENVOLVIMENTO...)!
 
-É uma ferrameta que consulta CNPJ e CPF, retornado as informações empresariais ou físicas corretamente. Uma ferrameta excelente para você e o seu negócio!
+É uma ferramenta que consulta CNPJ e CPF, retornado as informações empresariais ou físicas corretamente. Uma ferramenta excelente para você e o seu negócio!
+
 
 ## Instalação
 
