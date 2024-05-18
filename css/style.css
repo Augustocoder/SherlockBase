@@ -111,3 +111,27 @@ form button[type="submit"]:hover {
     font-size: 1.25rem;
   }
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+main div p {
+  text-align: left;
+}
+
+main div p {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  color: rgb(51 65 85);
+}
+
+main div p span:first-child {
+  font-weight: 500;
+}

@@ -1,24 +1,17 @@
-$(document).ready(function () {
-  $("#buscar").submit(function (event) {
-    event.preventDefault();
-    var cpf = $("input[name='cpf_cnpj']").val();
-    $("#carregando").show();
-    $("#icon").hide();
-
-    $.ajax({
-      type: "GET",
-      url: "consultar.php?cpf_cnpj=" + cpf,
-      dataType: "text",
+  let btn = document.getElementById("enviar");
+  btn.addEventListener("click", () => {
+    let cpf_cnpj = document.getElementById("cpf_cnpj").value;
+    fetch('api/', {
+      'method': 'POST',
+      headers: {
+        'Accept' : 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({'cpf_cnpj': cpf_cnpj}),
     })
-      .done(function (msg) {
-        $("#carregando").hide();
-        $("#icon").show();
-        $("#info").hide();
-        $("#result").html(msg);
-      })
-      .fail(function (jqXHR, textStatus, msg) {
-        $("#carregando").hide();
-        alert(msg);
-      });
+    .then(response => response.json())
+    .then(data => {
+       console.log(data);
+     })
+    
   });
-});

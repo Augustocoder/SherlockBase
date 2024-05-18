@@ -22,11 +22,6 @@ As informações são puxadas no banco de dados da SERPRO do Governo Brasileiro!
 
 Não, essa ferramenta é totalmente gratuita e funcional, para que você possa aprimorar suas técnicas de OSINT (Open Source Intelligence), ou até mesmo, a sua empresa.
 
-## Stack utilizada
-
-**Front-end:** HTML, CSS e JavaScript.
-
-**Back-end:** PHP.
-#
+##
 ![Logo](https://user-images.githubusercontent.com/121616883/211920003-3de2fe7e-ef41-42cc-b98c-9d6cfead41eb.png)
 

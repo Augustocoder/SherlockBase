@@ -6,49 +6,18 @@
     <title>SherlockBase</title>
     <meta name="author" content="AugustoCoder" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
-
-    <style>
-      /* Chrome, Safari, Edge, Opera */
-      input::-webkit-outer-spin-button,
-      input::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-      }
-
-      /* Firefox */
-      input[type="number"] {
-        -moz-appearance: textfield;
-      }
-
-      main div p {
-        text-align: left;
-      }
-
-      main div p {
-        font-size: 1.125rem; /* 18px */
-        line-height: 1.75rem; /* 28px */
-        color: rgb(51 65 85);
-      }
-
-      main div p span:first-child {
-        font-weight: 500;
-      }
-    </style>
   </head>
+
   <body class="w-screen h-screen overflow-x-hidden flex flex-col gap-4">
     <header
-      class="w-full bg-indigo-700 text-white text-center sm:text-left text-3xl font-medium p-4"
-    >
+      class="w-full bg-indigo-700 text-white text-center sm:text-left text-3xl font-medium p-4">
       <h1 class="truncate">SherlockBase</h1>
     </header>
 
     <main
-      class="flex-1 w-full h-full flex flex-col items-center gap-2 container mx-auto"
-    >
-      <form
-        id="buscar"
-        class="w-full h-fit max-w-2xl flex flex-col items-center gap-8 px-4 py-8 rounded shadow-md"
-      >
+      class="flex-1 w-full h-full flex flex-col items-center gap-2 container mx-auto">
+      <div
+        class="w-full h-fit max-w-2xl flex flex-col items-center gap-8 px-4 py-8 rounded shadow-md">
         <div class="text-2xl text-slate-700 font-medium text-center">
           <h2 class="truncate">
             Obtenha informações de maneira <br />
@@ -58,22 +27,20 @@
 
         <div class="flex">
           <input
-            type="number"
+            type="text"
             id="cpf_cnpj"
             name="cpf_cnpj"
             placeholder="CPF/CNPJ"
-            class="transition-colors placeholder:text-slate-300 border-red-500 placeholder:italic border-slate-400 focus:border-indigo-600 focus:ring-0 rounded-l w-4/5"
-          />
+            class="transition-colors placeholder:text-slate-300 border-red-500 placeholder:italic border-slate-400 focus:border-indigo-600 focus:ring-0 rounded-l w-4/5" />
 
           <button
+            id="enviar"
             type="submit"
-            class="transition-colors h-full px-2 text-xl rounded-r bg-indigo-500 text-white hover:bg-indigo-500/80"
-          >
+            class="transition-colors h-full px-2 text-xl rounded-r bg-indigo-500 text-white hover:bg-indigo-500/80">
             <div
               id="carregando"
               style="display: none"
-              class="h-6 w-6 border-t-2 border-white rounded-full animate-spin"
-            ></div>
+              class="h-6 w-6 border-t-2 border-white rounded-full animate-spin"></div>
 
             <div id="icon">
               <svg
@@ -82,35 +49,33 @@
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
                 stroke="currentColor"
-                class="w-6 h-6"
-              >
+                class="w-6 h-6">
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-                />
+                  d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
               </svg>
             </div>
           </button>
         </div>
-      </form>
+      </div>
 
       <div
-        class="w-full max-w-2xl flex flex-col items-center gap-8 px-4 py-8 rounded shadow-md break-all"
-      >
-        <div id="info">
-          <p class="text-lg text-slate-400">Informe um CPF/CNPJ</p>
-        </div>
+        id="#divResult"
+        class="w-full max-w-2xl flex flex-col items-center gap-8 px-4 py-8 rounded shadow-md break-all">
         <div id="result" class="flex flex-col gap-2"></div>
       </div>
     </main>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-      crossorigin="anonymous"
-    ></script>
+    <footer class="w-full bg-indigo-700 text-white p-4">
+      <div class="text-center">
+        <p>
+          Desenvolvido por
+          <a href="https://github.com/AugustoCoder"
+            >@AugustoCoder
+          </a>
+        </p>
+      </div>
+    </footer>
     <script src="./js/index.js"></script>
   </body>
 </html>
