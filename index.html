@@ -1,81 +1,42 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SherlockBase</title>
-    <meta name="author" content="AugustoCoder" />
-    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
-  </head>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>SherlockBase</title>
+        <meta name="author" content="AugustoCoder" />
+        <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    </head>
 
-  <body class="w-screen h-screen overflow-x-hidden flex flex-col gap-4">
-    <header
-      class="w-full bg-indigo-700 text-white text-center sm:text-left text-3xl font-medium p-4">
-      <h1 class="truncate">SherlockBase</h1>
-    </header>
+    <body class="w-screen h-screen overflow-x-hidden flex flex-col gap-4">
+        <header class="w-full bg-indigo-700 text-white text-center sm:text-left text-3xl font-medium p-4">
+            <h1 class="truncate">SherlockBase</h1>
+        </header>
 
-    <main
-      class="flex-1 w-full h-full flex flex-col items-center gap-2 container mx-auto">
-      <div
-        class="w-full h-fit max-w-2xl flex flex-col items-center gap-8 px-4 py-8 rounded shadow-md">
-        <div class="text-2xl text-slate-700 font-medium text-center">
-          <h2 class="truncate">
-            Obtenha informações de maneira <br />
-            rápida e eficiente.
-          </h2>
-        </div>
+        <main class="flex-1 flex flex-col items-center justify-center gap-8 px-4 py-8">
+            <div class="max-w-md w-full bg-white p-8 rounded-lg shadow-md">
+                <h2 class="text-2xl text-gray-800 font-medium mb-4 text-center">Obtenha informações de maneira rápida e eficiente.</h2>
 
-        <div class="flex">
-          <input
-            type="text"
-            id="cpf_cnpj"
-            name="cpf_cnpj"
-            placeholder="CPF/CNPJ"
-            class="transition-colors placeholder:text-slate-300 border-red-500 placeholder:italic border-slate-400 focus:border-indigo-600 focus:ring-0 rounded-l w-4/5" />
+                <div class="flex items-center">
+                    <input type="text" id="cpf_cnpj" name="cpf_cnpj" placeholder="CPF/CNPJ" class="placeholder-gray-400 border border-gray-300 focus:border-indigo-600 rounded-l px-4 py-2 w-full" />
+                    <button id="enviar" type="submit" class="bg-indigo-600 text-white px-6 py-2 rounded-r hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                        </svg>
+                    </button>
+                </div>
+                <div id="error"></div>
 
-          <button
-            id="enviar"
-            type="submit"
-            class="transition-colors h-full px-2 text-xl rounded-r bg-indigo-500 text-white hover:bg-indigo-500/80">
-            <div
-              id="carregando"
-              style="display: none"
-              class="h-6 w-6 border-t-2 border-white rounded-full animate-spin"></div>
-
-            <div id="icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="w-6 h-6">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-              </svg>
+                <div id="result" class="mt-8"></div>
             </div>
-          </button>
-        </div>
-      </div>
+        </main>
 
-      <div
-        id="#divResult"
-        class="w-full max-w-2xl flex flex-col items-center gap-8 px-4 py-8 rounded shadow-md break-all">
-        <div id="result" class="flex flex-col gap-2"></div>
-      </div>
-    </main>
-    <footer class="w-full bg-indigo-700 text-white p-4">
-      <div class="text-center">
-        <p>
-          Desenvolvido por
-          <a href="https://github.com/AugustoCoder"
-            >@AugustoCoder
-          </a>
-        </p>
-      </div>
-    </footer>
-    <script src="./js/index.js"></script>
-  </body>
+        <footer class="bg-indigo-700 text-white text-center py-4">
+            <p>
+                Desenvolvido por
+                <a href="https://github.com/AugustoCoder">@AugustoCoder</a>
+            </p>
+        </footer>
+        <script src="./js/index.js"></script>
+    </body>
 </html>

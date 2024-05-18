@@ -1,6 +1,7 @@
-# SherlockBase (API NOVA EM DESENVOLVIMENTO...)!
+# SherlockBase 2.0!
+### <i style="color: #C62D42">Não me responsabilizo pelo uso inadequado desta ferramenta, que foi criada com o propósito de auxiliar empresas ou para fins de estudo.</i>
+**Essa ferramenta permite consultar informações de CNPJ e CPF, fornecendo dados precisos sobre empresas ou pessoas físicas. É uma excelente opção para auxiliar você e o seu negócio**
 
-É uma ferramenta que consulta CNPJ e CPF, retornado as informações empresariais ou físicas corretamente. Uma ferramenta excelente para você e o seu negócio!
 
 
 ## Instalação
@@ -9,15 +10,14 @@ A instalação não é complicada, você apenas precisa de um Web Server, recome
 XAMPP que é bem mais fácil de configurar e upar os arquivos no HTDOCS.    
 ## Funcionalidades da Consulta
 
-- Consulta de CPF: Retorna o CPF, Nome Completo, Nome da Mãe, Data de Nascimento, Renda, E-mail e o Score do E-mail.
+- Consulta de CPF: Retorna o CPF, Nome Completo, Nome da Mãe, Data de Nascimento.
 - Consulta de CNPJ: Retorna o CNPJ, Razão Social, Capital Social, Situação da Empresa, Sócios da Empresa, Estado, E-mail e Telefone
 
 ## Perguntas?
 
 #### Onde ele puxa essas informações?
-
-As informações são puxadas no banco de dados da SERPRO do Governo Brasileiro!
-
+As informações são obtidas por meio da API da Receita e da ConsultaNacional.
+ 
 #### Tem algum custo para usar essa ferramenta?
 
 Não, essa ferramenta é totalmente gratuita e funcional, para que você possa aprimorar suas técnicas de OSINT (Open Source Intelligence), ou até mesmo, a sua empresa.
