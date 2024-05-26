@@ -6,8 +6,10 @@
 
 ## Instalação
 
-A instalação não é complicada, você apenas precisa de um Web Server, recomendaria instalar o 
-XAMPP que é bem mais fácil de configurar e upar os arquivos no HTDOCS.    
+Você tem duas opções:
+1° Instalar o XAMPP que é um pacote de instalações e você apenas coloca os arquivos no HTDOCS.
+2° Se não, caso você tenha já o PHP definido como variável de ambiente no seu workspace, apenas digite dentro da pasta
+```php -S localhost:8000```
 ## Funcionalidades da Consulta
 
 - Consulta de CPF: Retorna o CPF, Nome Completo, Nome da Mãe, Data de Nascimento.
