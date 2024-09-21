@@ -1,34 +1,59 @@
-# SherlockBase 2.0!
-![image](https://github.com/Augustocoder/SherlockBase/assets/121616883/3a18eb46-7756-4eca-8859-d6d7e2e6f925)
+# SherlockBase 3.0!
+![Captura de tela_21-9-2024_13455_localhost](https://github.com/user-attachments/assets/7ca6162f-646f-470c-abdc-ddddb1491e0e)
 
-### Não me responsabilizo pelo uso inadequado desta ferramenta, que foi criada com o propósito de auxiliar empresas ou para fins de estudo.
-**Essa ferramenta permite consultar informações de CNPJ e CPF, fornecendo dados precisos sobre empresas ou pessoas físicas. É uma excelente opção para auxiliar você e o seu negócio**
+
+### Aviso Legal
+**Não me responsabilizo pelo uso inadequado desta ferramenta. Esta aplicação foi criada com o propósito de auxiliar empresas e para fins de estudo.**
+
+Essa ferramenta permite consultar informações de CNPJ e CPF, fornecendo dados precisos sobre empresas e pessoas físicas.
+É uma excelente opção para ajudar você e o seu negócio.
+
 
 ## Precisa de Suporte?
-Entre em contato comigo, pelo email: suporte@augustodev.anonaddy.com, que irei responder assim que possível.
+Entre em contato comigo pelo e-mail: [suporte@augustodev.anonaddy.com](mailto:suporte@augustodev.anonaddy.com). Irei responder assim que possível.
 
 ## Instalação
 
-Você tem duas opções:
+Você tem duas opções para instalar a ferramenta:
 
-1° Instalar o XAMPP que é um pacote de instalações e você apenas coloca os arquivos no HTDOCS.
+1. **Usando o XAMPP**: Instale o XAMPP e coloque os arquivos na pasta `htdocs`.
 
-2° Se não, caso você tenha já o PHP definido como variável de ambiente no seu workspace, apenas digite dentro da pasta
+2. **Usando PHP no Terminal**: Se você já tem o PHP configurado como variável de ambiente, navegue até a pasta do projeto e execute:
+   ```bash
+   php -S localhost:8000
 
-```php -S localhost:8000```
 ## Funcionalidades da Consulta
 
-- Consulta de CPF: Retorna o CPF, Nome Completo, Nome da Mãe, Data de Nascimento.
-- Consulta de CNPJ: Retorna o CNPJ, Razão Social, Capital Social, Situação da Empresa, Sócios da Empresa, Estado, E-mail e Telefone
+### Consulta de CPF
+Retorna as seguintes informações:
+- CPF
+- Nome Completo
+- Nome da Mãe
+- Data de Nascimento
 
-## Perguntas?
+### Consulta de CNPJ
+Retorna as seguintes informações:
+- CNPJ
+- Razão Social
+- Capital Social
+- Situação da Empresa
+- Sócios da Empresa
+- Estado
+- E-mail
+- Telefone
 
-#### Onde ele puxa essas informações?
-As informações são obtidas por meio da API da Receita e da ConsultaNacional.
- 
-#### Tem algum custo para usar essa ferramenta?
+## Perguntas Frequentes
 
-Não, essa ferramenta é totalmente gratuita e funcional, para que você possa aprimorar suas técnicas de OSINT (Open Source Intelligence), ou até mesmo, a sua empresa.
+### Onde as informações são obtidas?
+As informações são coletadas por meio da API da Receita e da Consulta Nacional.
 
-##
+### Existe algum custo para usar esta ferramenta?
+Não, esta ferramenta é totalmente gratuita e funcional, ideal para aprimorar suas técnicas de OSINT (Open Source Intelligence) ou para uso empresarial.
+
+---
+
+Sinta-se à vontade para contribuir ou reportar quaisquer problemas!
+
+---
+
 ![Logo](https://user-images.githubusercontent.com/121616883/211920003-3de2fe7e-ef41-42cc-b98c-9d6cfead41eb.png)
