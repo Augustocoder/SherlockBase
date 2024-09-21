@@ -8,16 +8,17 @@
         <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
     </head>
 
-    <body class="w-screen h-screen overflow-x-hidden flex flex-col gap-4">
-        <header class="w-full bg-indigo-700 text-white text-center sm:text-left text-3xl font-medium p-4">
+    <body class="w-screen h-screen overflow-x-hidden flex flex-col gap-4 bg-gray-100">
+        <header class="w-full bg-indigo-700 text-white text-center sm:text-left text-4xl font-bold p-4">
             <h1 class="truncate">SherlockBase</h1>
         </header>
+    
 
         <main class="flex-1 flex flex-col items-center justify-center gap-8 px-4 py-8">
-            <div class="max-w-md w-full bg-white p-8 rounded-lg shadow-md">
+            <div class="max-w-md w-full bg-white p-8 rounded-lg shadow-lg">
                 <h2 class="text-2xl text-gray-800 font-medium mb-4 text-center">Obtenha informações de maneira rápida e eficiente.</h2>
-
-                <div class="flex items-center">
+    
+                <div class="flex items-center mb-4">
                     <input type="text" id="cpf_cnpj" name="cpf_cnpj" placeholder="CPF/CNPJ" class="placeholder-gray-400 border border-gray-300 focus:border-indigo-600 rounded-l px-4 py-2 w-full" />
                     <button id="enviar" type="submit" class="bg-indigo-600 text-white px-6 py-2 rounded-r hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-600">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
@@ -25,18 +26,22 @@
                         </svg>
                     </button>
                 </div>
-                <div id="error"></div>
-
+    
+                <div id="error" class="hidden mb-4 p-2 bg-red-100 border border-red-400 text-red-700 rounded"></div>
+    
                 <div id="result" class="mt-8"></div>
             </div>
         </main>
+    
 
         <footer class="bg-indigo-700 text-white text-center py-4">
             <p>
                 Desenvolvido por
-                <a href="https://github.com/AugustoCoder">@AugustoCoder</a>
+                <a href="https://github.com/AugustoCoder" target="_blank" class="hover:underline"> @AugustoCoder</a>
             </p>
         </footer>
+    
+    
         <script src="./js/index.js"></script>
     </body>
 </html>
