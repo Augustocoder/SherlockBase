@@ -1,4 +1,4 @@
-# SherlockBase 3.0! (MANUTENÇÃO)
+# SherlockBase 3.0! (SERÁ FEITO O UPDATE EM 15/01/2025)
 ![Captura de tela_21-9-2024_13455_localhost](https://github.com/user-attachments/assets/7ca6162f-646f-470c-abdc-ddddb1491e0e)
 
 
