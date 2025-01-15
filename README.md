@@ -1,9 +1,6 @@
-<<<<<<< HEAD
 # SherlockBase v3.0.1 - Ferramenta Online! 
 
-=======
-# SherlockBase 3.0! (SERÁ FEITO O UPDATE EM 15/01/2025)
->>>>>>> 4fe77636abfebe3d00f59720d985c458c4dbd162
+
 ![Captura de tela_21-9-2024_13455_localhost](https://github.com/user-attachments/assets/7ca6162f-646f-470c-abdc-ddddb1491e0e)
 
 
@@ -51,7 +48,6 @@ Retorna as seguintes informações:
 
 ### Onde as informações são obtidas?
 As informações são coletadas por meio da API da Receita e da Consulta Nacional.
-<<<<<<< HEAD
 
 ### Existe algum custo para usar esta ferramenta?
 Não, esta ferramenta é totalmente gratuita e funcional, ideal para aprimorar suas técnicas de OSINT (Open Source Intelligence) ou para uso empresarial.
@@ -63,16 +59,3 @@ Sinta-se à vontade para contribuir ou reportar quaisquer problemas!
 ---
 
 ![Logo](https://user-images.githubusercontent.com/121616883/211920003-3de2fe7e-ef41-42cc-b98c-9d6cfead41eb.png)
-=======
-
-### Existe algum custo para usar esta ferramenta?
-Não, esta ferramenta é totalmente gratuita e funcional, ideal para aprimorar suas técnicas de OSINT (Open Source Intelligence) ou para uso empresarial.
-
----
-
-Sinta-se à vontade para contribuir ou reportar quaisquer problemas!
-
----
-
-![Logo](https://user-images.githubusercontent.com/121616883/211920003-3de2fe7e-ef41-42cc-b98c-9d6cfead41eb.png)
->>>>>>> 4fe77636abfebe3d00f59720d985c458c4dbd162
