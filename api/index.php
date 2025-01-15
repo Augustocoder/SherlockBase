@@ -11,7 +11,7 @@ function filtrarCpfCnpj($cpf_cnpj)
 }
 function reqConsultaCNPJ($cpf_cnpj)
 {
-    @$request = file_get_contents('https://receitaws.com.br/v1/cnpj/'.$cpf_cnpj);
+    @$request = file_get_contents('https://receitaws.com.br/v1/cnpj/' . $cpf_cnpj);
     $respJson = json_decode($request, true);
     if (@$respJson['nome']) {
         print_r($request);
@@ -26,10 +26,29 @@ function reqConsultaCNPJ($cpf_cnpj)
 function reqConsultaCPF($cpf_cnpj)
 {
     try {
-        @$request = file_get_contents("https://api.consultanacional.org:3000/consulta/$cpf_cnpj");
+        // Essa API foi encontrada no Search Engine "Censys".
+        @$request = file_get_contents("https://api.centralda20.com/consultar/$cpf_cnpj");
         $respJson = json_decode($request, true);
-        if (@$respJson['cpf']) {
-            print_r($request);
+        if (isset($respJson['CPF'])) {
+            $formatarJSON = json_encode(
+                [
+                    "CPF" => $cpf_cnpj,
+                    "NOME" => $respJson["NOME"],
+                    "SEXO" => $respJson["SEXO"],
+                    "NASC" => $respJson["NASC"],
+                    "NOME_MAE" => isset($respJson["NOME_MAE"]) ? $respJson["NOME_MAE"] : "Não encontrado",
+                    "RG" => isset($respJson["RG"]) ? $respJson["RG"] : "Não encontrado",
+                    "CBO" => isset($respJson["CBO"]) ? $respJson["CBO"] : "Não encontrado",
+                    "ORGAO_EMISSOR" => isset($respJson["ORGAO_EMISSOR"]) ? $respJson["ORGAO_EMISSOR"] : "Não encontrado",
+                    "UF_EMISSAO" => isset($respJson["UF_EMISSAO"]) ? $respJson["UF_EMISSAO"] : "Não encontrado",
+                    "CD_MOSAIC" => isset($respJson["CD_MOSAIC"]) ? $respJson["CD_MOSAIC"] : "Não encontrado",
+                    "RENDA" => isset($respJson["RENDA"]) ? "R$".$respJson["RENDA"] : "Não encontrado",
+                    "TITULO_ELEITOR" => isset($respJson["TITULO_ELEITOR"]) ? $respJson["TITULO_ELEITOR"] : "Não encontrado",
+                    "CD_MOSAIC_NOVO" => isset($respJson["CD_MOSAIC_NOVO"]) ? $respJson["CD_MOSAIC_NOVO"] : "Não encontrado",
+
+                ]
+            );
+            print_r($formatarJSON);
         } else {
             $msg = [
                 'status' => 'error',

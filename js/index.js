@@ -56,21 +56,37 @@ btn.addEventListener("click", () => {
             resultDiv.innerHTML = `<div class="bg-gray-100 rounded-lg p-4"><p class="text-indigo-700 font-bold">Retorno: <span class="text-red-700 font-bold">${data.msg}</span></p></div>`;
           }
         } else if (cpf_cnpj.length === 11) {
-          let dataNascFormat = new Date(data.nascimento).toLocaleDateString(
-            "pt-BR"
-          );
+          let dataNascFormat = new Date(data.NASC).toLocaleDateString("pt-BR");
           if (data.status != "error") {
             resultDiv.innerHTML = `
                         <div class="bg-gray-100 rounded-lg p-4">
                             <p class="text-indigo-700 font-bold">Nome:</p>
-                            <p class="text-stone-800">${data.nome}</p>
+                            <p class="text-stone-800">${data.NOME}</p>
                             <p class="text-indigo-700 font-bold">CPF:</p>
-                            <p class="text-stone-800">${data.cpf}</p>
+                            <p class="text-stone-800">${data.CPF}</p>
                             <p class="text-indigo-700 font-bold">Mãe:</p>
-                            <p class="text-stone-800">${data.mae}</p>
+                            <p class="text-stone-800">${data.NOME_MAE}</p>
                             <p class="text-indigo-700 font-bold">Data de Nascimento:</p>
                             <p class="text-stone-800">${dataNascFormat}</p>
-                        </div>`;
+                            <p class="text-indigo-700 font-bold">Sexo:</p>
+                            <p class="text-stone-800">${data.SEXO}</p>
+                            <p class="text-indigo-700 font-bold">RG:</p>
+                            <p class="text-stone-800">${data.RG}</p>
+                            <p class="text-indigo-700 font-bold">CBO:</p>
+                            <p class="text-stone-800">${data.CBO}</p>
+                            <p class="text-indigo-700 font-bold">Orgão Emissor:</p>
+                            <p class="text-stone-800">${data.ORGAO_EMISSOR}</p>
+                            <p class="text-indigo-700 font-bold">UF Emissão:</p>
+                            <p class="text-stone-800">${data.UF_EMISSAO}</p>
+                            <p class="text-indigo-700 font-bold">CD Mosaic:</p>
+                            <p class="text-stone-800">${data.CD_MOSAIC}</p>
+                            <p class="text-indigo-700 font-bold">RENDA:</p>
+                            <p class="text-stone-800">${data.RENDA}</p>  
+                            <p class="text-indigo-700 font-bold">Título de Eleitor:</p>
+                            <p class="text-stone-800">${data.TITULO_ELEITOR}</p> 
+                            <p class="text-indigo-700 font-bold">CD MOSAIC NOVO:</p>
+                            <p class="text-stone-800">${data.CD_MOSAIC_NOVO}</p>   
+                            </div>`;
           } else {
             resultDiv.innerHTML = `<div class="bg-gray-100 rounded-lg p-4"><p class="text-indigo-700 font-bold">Retorno: <span class="text-red-700 font-bold">${data.msg}</span></p></div>`;
           }
