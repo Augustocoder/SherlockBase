@@ -29,9 +29,18 @@ Você tem duas opções para instalar a ferramenta:
 ### Consulta de CPF
 Retorna as seguintes informações:
 - CPF
-- Nome Completo
-- Nome da Mãe
-- Data de Nascimento
+- Nome
+- Sexo
+- Data de Nascimento 
+- Nome da Mãe 
+- RG
+- CBO
+- Órgão Emissor 
+- UF de Emissão
+- Código Mosaic
+- Renda
+- Título de Eleitor 
+- Código Mosaic Novo 
 
 ### Consulta de CNPJ
 Retorna as seguintes informações:
