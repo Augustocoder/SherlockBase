@@ -1,4 +1,5 @@
-# SherlockBase v3.0.1 - API de CPF em manutenção!
+# SherlockBase v3.0.1 
+Obs: API's em manutenção, em breve, atualizações no front e back.
 
 
 ![Captura de tela_21-9-2024_13455_localhost](https://github.com/user-attachments/assets/7ca6162f-646f-470c-abdc-ddddb1491e0e)
