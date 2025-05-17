@@ -1,5 +1,5 @@
 # SherlockBase v3.0.2 
- * A API de CPF em breve será atualizada, novos UPDATEs serão lançados confome vou tendo tempo, caso queira colaborar com projeto, entre contato comigo.  
+ * A API de CPF em breve será atualizada, novos UPDATEs serão lançados confome vou tendo tempo, caso queira colaborar com o projeto, entre contato comigo.  
 
 ![ Imagem Ilustrativa da Ferramenta](https://github.com/user-attachments/assets/33d8ad81-cf57-4a81-935d-8f8ba6b4a787)
 
