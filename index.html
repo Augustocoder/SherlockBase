@@ -1,47 +1,76 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>SherlockBase</title>
-        <meta name="author" content="AugustoCoder" />
-        <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
-    </head>
 
-    <body class="w-screen h-screen overflow-x-hidden flex flex-col gap-4 bg-gray-100">
-        <header class="w-full bg-indigo-700 text-white text-center sm:text-left text-4xl font-bold p-4">
-            <h1 class="truncate">SherlockBase</h1>
-        </header>
-    
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SherlockBase</title>
+    <meta name="author" content="AugustoCoder" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+</head>
 
-        <main class="flex-1 flex flex-col items-center justify-center gap-8 px-4 py-8">
-            <div class="max-w-md w-full bg-white p-8 rounded-lg shadow-lg">
-                <h2 class="text-2xl text-gray-800 font-medium mb-4 text-center">Obtenha informações de maneira rápida e eficiente.</h2>
-    
-                <div class="flex items-center mb-4">
-                    <input type="text" id="cpf_cnpj" name="cpf_cnpj" placeholder="CPF/CNPJ" class="placeholder-gray-400 border border-gray-300 focus:border-indigo-600 rounded-l px-4 py-2 w-full" />
-                    <button id="enviar" type="submit" class="bg-indigo-600 text-white px-6 py-2 rounded-r hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-600">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-                        </svg>
-                    </button>
-                </div>
-    
-                <div id="error" class="hidden mb-4 p-2 bg-red-100 border border-red-400 text-red-700 rounded"></div>
-    
-                <div id="result" class="mt-8"></div>
+<body
+    class="w-screen min-h-screen flex flex-col bg-gradient-to-tr from-gray-950 via-gray-900 to-gray-800 font-mono text-gray-100 overflow-x-hidden">
+
+    <header class="w-full fixed top-0 z-50 bg-gradient-to-r from-indigo-900 to-indigo-700 shadow-2xl">
+        <div class="max-w-3xl mx-auto px-4 py-5 flex items-center">
+            <?xml version="1.0" encoding="utf-8"?>
+            <!-- Caso queira outro SVG, eu peguei nesse -> www.svgrepo.com -->
+            <svg width="20px" height="20px" viewBox="0 0 1024 1024" class="icon" version="1.1"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M460 459.3m-245.2 0a245.2 245.2 0 1 0 490.4 0 245.2 245.2 0 1 0-490.4 0Z" fill="#E1F0FF" />
+                <path
+                    d="M460 719c-69.4 0-134.6-27-183.6-76.1s-76.1-114.3-76.1-183.6c0-69.4 27-134.6 76.1-183.6s114.3-76.1 183.6-76.1c69.4 0 134.6 27 183.6 76.1s76.1 114.3 76.1 183.6c0 69.4-27 134.6-76.1 183.6S529.4 719 460 719z m0-490.4c-61.6 0-119.6 24-163.1 67.6-43.6 43.6-67.6 101.5-67.6 163.1s24 119.6 67.6 163.1C340.4 666 398.4 690 460 690s119.6-24 163.1-67.6c43.6-43.6 67.6-101.5 67.6-163.1s-24-119.6-67.6-163.1c-43.5-43.6-101.5-67.6-163.1-67.6z"
+                    fill="#446EB1" />
+                <path
+                    d="M640.6 630.6c8.7-8.7 22.8-8.7 31.5 0L802 760.5c8.6 8.9 8.3 23-0.5 31.5-8.6 8.3-22.3 8.3-31 0L640.6 662.1c-8.4-8.6-8.1-22.6 0-31.5z"
+                    fill="#446EB1" />
+            </svg>
+            <h1 class="text-3xl sm:text-4xl font-extrabold tracking-wide uppercase drop-shadow">SherlockBase</h1>
+        </div>
+    </header>
+
+    <main class="flex-1 flex flex-col items-center justify-center px-4 pt-32 pb-12">
+        <div class="max-w-md w-full glass rounded-2xl shadow-2xl p-8 transition-all duration-300 hover:scale-[1.015]">
+
+            <h2 class="text-center text-2xl font-semibold mb-2 text-indigo-200 tracking-wide drop-shadow">Inteligência
+                em busca de dados</h2>
+            <p class="text-center text-sm text-gray-400 mb-7">Consulta avançada de CPF/CNPJ em tempo real.<br>Sua consulta
+                em apenas um clique.</p>
+
+            <form class="flex group" autocomplete="off">
+                <label for="cpf_cnpj" class="sr-only">CPF ou CNPJ</label>
+                <input type="text" id="cpf_cnpj" name="cpf_cnpj" placeholder="CPF ou CNPJ"
+                    class="flex-1 rounded-l-lg bg-gray-900/60 border-0 border border-indigo-600 text-gray-100 placeholder-gray-500 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"
+                    aria-label="Digite o CPF ou CNPJ" />
+                <button id="enviar" type="submit"
+                    class="bg-indigo-600 hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-400 text-white px-5 py-4 rounded-r-lg transition-all duration-200 shadow flex items-center justify-center group-hover:scale-110"
+                    aria-label="Consultar">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                        class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                    </svg>
+                </button>
+            </form>
+
+            <div id="error"
+                class="hidden mt-5 p-3 bg-red-900/70 border border-red-400 text-red-200 text-sm rounded shadow transition-all">
             </div>
-        </main>
-    
 
-        <footer class="bg-indigo-700 text-white text-center py-4">
-            <p>
-                Desenvolvido por
-                <a href="https://github.com/AugustoCoder" target="_blank" class="hover:underline"> @AugustoCoder</a>
-            </p>
-        </footer>
-    
-    
-        <script src="./js/index.js"></script>
-    </body>
+            <div id="result" class="mt-7"></div>
+        </div>
+    </main>
+
+    <footer class="w-full bg-gradient-to-r from-indigo-900 to-indigo-700 py-4 mt-auto shadow-inner">
+        <div class="text-center text-xs text-indigo-200">
+            Desenvolvido por
+            <a href="https://github.com/AugustoCoder" target="_blank"
+                class="underline hover:text-indigo-400 transition-all"> @AugustoCoder</a>
+        </div>
+    </footer>
+
+    <script src="./js/index.js"></script>
+</body>
+
 </html>

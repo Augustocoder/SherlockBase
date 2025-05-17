@@ -1,15 +1,23 @@
 let btn = document.getElementById("enviar");
-btn.addEventListener("click", () => {
-  let cpf_cnpj = document.getElementById("cpf_cnpj").value;
-  cpf_cnpj = cpf_cnpj
-    .replaceAll(".", "")
-    .replaceAll("-", "")
-    .replaceAll("/", "");
+
+btn.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  let cpf_cnpj = document.getElementById("cpf_cnpj").value.trim();
+  cpf_cnpj = cpf_cnpj.replace(/\D/g, ""); 
+
   let errDiv = document.getElementById("error");
   let resultDiv = document.getElementById("result");
 
+  errDiv.classList.add("hidden");
+  resultDiv.innerHTML = "";
+
   btn.disabled = true;
-  btn.innerHTML = '<img  class="w-6 h-6" src="/images/loading.gif">';
+  btn.innerHTML = `
+    <svg class="animate-spin w-6 h-6 text-indigo-400" fill="none" viewBox="0 0 24 24">
+      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+      <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+    </svg>`;
 
   if (cpf_cnpj.length === 14 || cpf_cnpj.length === 11) {
     fetch("api/", {
@@ -22,93 +30,109 @@ btn.addEventListener("click", () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        errDiv.style.display = "none";
+        const cardBase =
+          "glass border border-indigo-600 rounded-xl shadow-lg p-5 transition-all";
+
         if (cpf_cnpj.length === 14) {
-          let nomeDefine = data.nome;
-          if (nomeDefine) {
-            let socios =
-              data.qsa && data.qsa.length > 0
-                ? data.qsa[0].nome
-                : "Não Informado";
+          if (data.status !== "error") {
+            let socios = data.qsa?.[0]?.nome || "Não Informado";
             let name = data.nome || "Não Informado";
             let telefone = data.telefone || "Não Informado";
             let porte = data.porte || "Não Informado";
             let capital_social = data.capital_social || "Não Informado";
             let email = data.email || "Não Informado";
-            if (data.status != "error") {
-              resultDiv.innerHTML = `
-                        <div class="bg-gray-100 rounded-lg p-4">
-                            <p class="text-indigo-700 font-bold">Razão Social:</p>
-                            <p class="text-gray-800">${name}</p>
-                            <p class="text-indigo-700 font-bold">E-mail:</p>
-                            <p class="text-gray-800">${email}</p>
-                            <p class="text-indigo-700 font-bold">Nome do Sócio-Principal:</p>
-                            <p class="text-gray-800">${socios}</p>
-                            <p class="text-indigo-700 font-bold">Telefone:</p>
-                            <p class="text-gray-800">${telefone}</p>
-                            <p class="text-indigo-700 font-bold">Porte da Empresa:</p>
-                            <p class="text-gray-800">${porte}</p>
-                            <p class="text-indigo-700 font-bold">Capital Social:</p>
-                            <p class="text-gray-800">R$ ${capital_social}</p>
-                        </div>`;
-            }
+            resultDiv.innerHTML = `
+              <div class="${cardBase}">
+                <p class="font-bold text-indigo-400 mb-2">Razão Social:</p>
+                <p class="text-gray-100 mb-1">${name}</p>
+                <p class="font-bold text-indigo-400 mt-3 mb-2">E-mail:</p>
+                <p class="text-gray-100 mb-1">${email}</p>
+                <p class="font-bold text-indigo-400 mt-3 mb-2">Sócio Principal:</p>
+                <p class="text-gray-100 mb-1">${socios}</p>
+                <p class="font-bold text-indigo-400 mt-3 mb-2">Telefone:</p>
+                <p class="text-gray-100 mb-1">${telefone}</p>
+                <p class="font-bold text-indigo-400 mt-3 mb-2">Porte da Empresa:</p>
+                <p class="text-gray-100 mb-1">${porte}</p>
+                <p class="font-bold text-indigo-400 mt-3 mb-2">Capital Social:</p>
+                <p class="text-gray-100 mb-1">R$ ${capital_social}</p>
+              </div>
+            `;
           } else {
-            resultDiv.innerHTML = `<div class="bg-gray-100 rounded-lg p-4"><p class="text-indigo-700 font-bold">Retorno: <span class="text-red-700 font-bold">${data.msg}</span></p></div>`;
+            resultDiv.innerHTML = `
+              <div class="${cardBase} border-red-600">
+                <p class="font-bold text-red-400">Retorno:</p>
+                <p class="text-red-200">${data.msg || "Erro ao consultar."}</p>
+              </div>
+            `;
           }
         } else if (cpf_cnpj.length === 11) {
-          let dataNascFormat = new Date(data.NASC).toLocaleDateString("pt-BR");
-          if (data.status != "error") {
+          if (data.status !== "error") {
+            let dataNascFormat = data.NASC
+              ? new Date(data.NASC).toLocaleDateString("pt-BR")
+              : "Não Informado";
             resultDiv.innerHTML = `
-                        <div class="bg-gray-100 rounded-lg p-4">
-                            <p class="text-indigo-700 font-bold">Nome:</p>
-                            <p class="text-stone-800">${data.NOME}</p>
-                            <p class="text-indigo-700 font-bold">CPF:</p>
-                            <p class="text-stone-800">${data.CPF}</p>
-                            <p class="text-indigo-700 font-bold">Mãe:</p>
-                            <p class="text-stone-800">${data.NOME_MAE}</p>
-                            <p class="text-indigo-700 font-bold">Data de Nascimento:</p>
-                            <p class="text-stone-800">${dataNascFormat}</p>
-                            <p class="text-indigo-700 font-bold">Sexo:</p>
-                            <p class="text-stone-800">${data.SEXO}</p>
-                            <p class="text-indigo-700 font-bold">RG:</p>
-                            <p class="text-stone-800">${data.RG}</p>
-                            <p class="text-indigo-700 font-bold">CBO:</p>
-                            <p class="text-stone-800">${data.CBO}</p>
-                            <p class="text-indigo-700 font-bold">Orgão Emissor:</p>
-                            <p class="text-stone-800">${data.ORGAO_EMISSOR}</p>
-                            <p class="text-indigo-700 font-bold">UF Emissão:</p>
-                            <p class="text-stone-800">${data.UF_EMISSAO}</p>
-                            <p class="text-indigo-700 font-bold">CD Mosaic:</p>
-                            <p class="text-stone-800">${data.CD_MOSAIC}</p>
-                            <p class="text-indigo-700 font-bold">RENDA:</p>
-                            <p class="text-stone-800">${data.RENDA}</p>  
-                            <p class="text-indigo-700 font-bold">Título de Eleitor:</p>
-                            <p class="text-stone-800">${data.TITULO_ELEITOR}</p> 
-                            <p class="text-indigo-700 font-bold">CD MOSAIC NOVO:</p>
-                            <p class="text-stone-800">${data.CD_MOSAIC_NOVO}</p>   
-                            </div>`;
+              <div class="${cardBase}">
+                <p class="font-bold text-indigo-400 mb-2">Nome:</p>
+                <p class="text-gray-100 mb-1">${data.NOME}</p>
+                <p class="font-bold text-indigo-400 mt-3 mb-2">CPF:</p>
+                <p class="text-gray-100 mb-1">${data.CPF}</p>
+                <p class="font-bold text-indigo-400 mt-3 mb-2">Mãe:</p>
+                <p class="text-gray-100 mb-1">${data.NOME_MAE}</p>
+                <p class="font-bold text-indigo-400 mt-3 mb-2">Nascimento:</p>
+                <p class="text-gray-100 mb-1">${dataNascFormat}</p>
+                <p class="font-bold text-indigo-400 mt-3 mb-2">Sexo:</p>
+                <p class="text-gray-100 mb-1">${data.SEXO}</p>
+                <p class="font-bold text-indigo-400 mt-3 mb-2">RG:</p>
+                <p class="text-gray-100 mb-1">${data.RG}</p>
+                <p class="font-bold text-indigo-400 mt-3 mb-2">CBO:</p>
+                <p class="text-gray-100 mb-1">${data.CBO}</p>
+                <p class="font-bold text-indigo-400 mt-3 mb-2">Órgão Emissor:</p>
+                <p class="text-gray-100 mb-1">${data.ORGAO_EMISSOR}</p>
+                <p class="font-bold text-indigo-400 mt-3 mb-2">UF Emissão:</p>
+                <p class="text-gray-100 mb-1">${data.UF_EMISSAO}</p>
+                <p class="font-bold text-indigo-400 mt-3 mb-2">CD Mosaic:</p>
+                <p class="text-gray-100 mb-1">${data.CD_MOSAIC}</p>
+                <p class="font-bold text-indigo-400 mt-3 mb-2">RENDA:</p>
+                <p class="text-gray-100 mb-1">${data.RENDA}</p>
+                <p class="font-bold text-indigo-400 mt-3 mb-2">Título de Eleitor:</p>
+                <p class="text-gray-100 mb-1">${data.TITULO_ELEITOR}</p>
+                <p class="font-bold text-indigo-400 mt-3 mb-2">CD MOSAIC NOVO:</p>
+                <p class="text-gray-100 mb-1">${data.CD_MOSAIC_NOVO}</p>
+              </div>
+            `;
           } else {
-            resultDiv.innerHTML = `<div class="bg-gray-100 rounded-lg p-4"><p class="text-indigo-700 font-bold">Retorno: <span class="text-red-700 font-bold">${data.msg}</span></p></div>`;
+            resultDiv.innerHTML = `
+              <div class="${cardBase} border-red-600">
+                <p class="font-bold text-red-400">Retorno:</p>
+                <p class="text-red-200">${data.msg || "Erro ao consultar."}</p>
+              </div>
+            `;
           }
-        } else {
-          resultDiv.innerHTML = `<div class="bg-gray-100 rounded-lg p-4"><p class="text-indigo-700 font-bold">Não encontrei</p></div>`;
         }
       })
       .catch((error) => {
+        errDiv.classList.remove("hidden");
+        errDiv.innerHTML = `<p class="text-red-200 font-mono">Falha na consulta. Reporte ao suporte.</p>`;
+        resultDiv.innerHTML = "";
         console.error("Erro - Reporte no GIT:", error);
       })
       .finally(() => {
         btn.disabled = false;
-        btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-                        </svg>`;
+        btn.innerHTML = `
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+          </svg>`;
       });
   } else {
-    errDiv.style.display = "block";
-    errDiv.innerHTML = `<p class="text-red-700 text-sm">Preencha corretamente as informações.</p>`;
+    errDiv.classList.remove("hidden");
+    errDiv.className =
+      "glass border border-red-600 rounded-lg p-3 mt-5 mb-2 text-red-200 text-sm shadow-lg transition-all";
+    errDiv.innerHTML = `<p>Preencha corretamente as informações.</p>`;
     btn.disabled = false;
-    btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-                        </svg>`;
+    btn.innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+      </svg>`;
+    resultDiv.innerHTML = "";
   }
 });

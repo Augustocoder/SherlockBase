@@ -3,6 +3,12 @@ body {
   background-color: #f4f4f4;
 }
 
+.glass {
+  background: rgba(30, 41, 59, 0.88);
+  backdrop-filter: blur(7px) saturate(160%);
+  border: 1.5px solid rgba(59, 130, 246, 0.18);
+}
+
 header {
   background-color: #333;
   color: white;

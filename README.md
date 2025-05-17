@@ -1,9 +1,7 @@
-# SherlockBase v3.0.1 
-Obs: API's em manutenção, em breve, atualizações no front e back.
+# SherlockBase v3.0.2 
+ * A API de CPF em breve será atualizada, novos UPDATEs serão lançados confome vou tendo tempo, caso queira colaborar com projeto, entre contato comigo.  
 
-
-![Captura de tela_21-9-2024_13455_localhost](https://github.com/user-attachments/assets/7ca6162f-646f-470c-abdc-ddddb1491e0e)
-
+![ Imagem Ilustrativa da Ferramenta]()
 
 ### Aviso Legal
 **Não me responsabilizo pelo uso inadequado desta ferramenta. Esta aplicação foi criada com o propósito de auxiliar empresas e para fins de estudo.**
@@ -24,7 +22,7 @@ Você tem duas opções para instalar a ferramenta:
 2. **Usando PHP no Terminal**: Se você já tem o PHP configurado como variável de ambiente, navegue até a pasta do projeto e execute:
    ```bash
    php -S localhost:8000
-
+3. **Apache ou NGINX**
 ## Funcionalidades da Consulta
 
 ### Consulta de CPF
