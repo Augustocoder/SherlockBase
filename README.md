@@ -1,5 +1,4 @@
-# SherlockBase v3.0.2 
- * A API de CPF em breve será atualizada, novos UPDATEs serão lançados confome vou tendo tempo, caso queira colaborar com o projeto, entre contato comigo.  
+# SherlockBase v3.0.3 
 
 ![ Imagem Ilustrativa da Ferramenta](https://github.com/user-attachments/assets/33d8ad81-cf57-4a81-935d-8f8ba6b4a787)
 
@@ -27,20 +26,17 @@ Você tem duas opções para instalar a ferramenta:
 
 ### Consulta de CPF
 Retorna as seguintes informações:
-- CPF
 - Nome
-- Sexo
-- Data de Nascimento 
-- Nome da Mãe 
-- RG
-- CBO
-- Órgão Emissor 
-- UF de Emissão
-- Código Mosaic
+- CPF
+- Mãe
+- Nascimento
+- Pai
+- Orgão Emissor
 - Renda
-- Título de Eleitor 
-- Código Mosaic Novo 
-
+- Sexo
+- Título de Eleitor
+- UF Emissão 
+  
 ### Consulta de CNPJ
 Retorna as seguintes informações:
 - CNPJ
