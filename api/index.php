@@ -44,13 +44,13 @@ function reqConsultaCPF($cpf)
         CURLOPT_SSL_VERIFYPEER => true,
         CURLOPT_POSTFIELDS     => $postData,
     ]);
-    $result = curl_exec($ch);
+     $result = curl_exec($ch);
     if ($result === false) {
         json_response(['status' => 'error', 'msg' => 'Falha ao consultar serviço externo.'], 502);
     }
     curl_close($ch);
     $resultToJSON = json_decode($result, true);
-    if (isset($resultToJSON['status']) == 200) {
+    if (isset($resultToJSON['status']) && $resultToJSON['status'] == 200) {
         $nasc          = $resultToJSON['dados'][0]['NASC'] ?? 'Não informado';
         $nome          = $resultToJSON['dados'][0]['NOME'] ?? 'Não informado';
         $nomeMae       = $resultToJSON['dados'][0]['NOME_MAE'] ?? 'Não informado';

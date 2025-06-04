@@ -1,6 +1,6 @@
 let btn = document.getElementById("enviar");
 
-btn.addEventListener("click", (e) => {
+btn.addEventListener("click", async (e) => {
   e.preventDefault();
 
   let cpf_cnpj = document.getElementById("cpf_cnpj").value.trim();
@@ -20,28 +20,29 @@ btn.addEventListener("click", (e) => {
     </svg>`;
 
   if (cpf_cnpj.length === 14 || cpf_cnpj.length === 11) {
-    fetch("api/", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ cpf_cnpj: cpf_cnpj }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        const cardBase =
-          "glass border border-indigo-600 rounded-xl shadow-lg p-5 transition-all";
+    try {
+      let reqApi = await fetch("api/", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ cpf_cnpj: cpf_cnpj }),
+      });
 
-        if (cpf_cnpj.length === 14) {
-          if (data.status !== "error") {
-            let socios = data.qsa?.[0]?.nome || "Não Informado";
-            let name = data.nome || "Não Informado";
-            let telefone = data.telefone || "Não Informado";
-            let porte = data.porte || "Não Informado";
-            let capital_social = data.capital_social || "Não Informado";
-            let email = data.email || "Não Informado";
-            resultDiv.innerHTML = `
+      let respApi = await reqApi.json();
+      const cardBase =
+        "glass border border-indigo-600 rounded-xl shadow-lg p-5 transition-all";
+
+      if (cpf_cnpj.length === 14) {
+        if (respApi.status !== "error") {
+          let socios = respApi.qsa?.[0]?.nome || "Não Informado";
+          let name = respApi.nome || "Não Informado";
+          let telefone = respApi.telefone || "Não Informado";
+          let porte = respApi.porte || "Não Informado";
+          let capital_social = respApi.capital_social || "Não Informado";
+          let email = respApi.email || "Não Informado";
+          resultDiv.innerHTML = `
               <div class="${cardBase}">
                 <p class="font-bold text-indigo-400 mb-2">Razão Social:</p>
                 <p class="text-gray-100 mb-1">${name}</p>
@@ -57,66 +58,66 @@ btn.addEventListener("click", (e) => {
                 <p class="text-gray-100 mb-1">R$ ${capital_social}</p>
               </div>
             `;
-          } else {
-            resultDiv.innerHTML = `
+        } else {
+          resultDiv.innerHTML = `
               <div class="${cardBase} border-red-600">
                 <p class="font-bold text-red-400">Retorno:</p>
-                <p class="text-red-200">${data.msg || "Erro ao consultar."}</p>
+                <p class="text-red-200">${respApi.msg || "Erro ao consultar."}</p>
               </div>
             `;
-          }
-        } else if (cpf_cnpj.length === 11) {
-          if (data.status !== "error") {
-            
-            resultDiv.innerHTML = `
+        }
+      } else if (cpf_cnpj.length === 11) {
+          console.log(respApi);
+        if (respApi.status !== "error") {
+          resultDiv.innerHTML = `
               <div class="${cardBase}">
                 <p class="font-bold text-indigo-400 mb-2">Nome:</p>
-                <p class="text-gray-100 mb-1">${data.nome}</p>
+                <p class="text-gray-100 mb-1">${respApi.nome}</p>
                 <p class="font-bold text-indigo-400 mt-3 mb-2">CPF:</p>
-                <p class="text-gray-100 mb-1">${data.cpf}</p>
+                <p class="text-gray-100 mb-1">${respApi.cpf}</p>
                 <p class="font-bold text-indigo-400 mt-3 mb-2">Mãe:</p>
-                <p class="text-gray-100 mb-1">${data.nomeMae}</p>
+                <p class="text-gray-100 mb-1">${respApi.nomeMae}</p>
                 <p class="font-bold text-indigo-400 mt-3 mb-2">Nascimento:</p>
-                <p class="text-gray-100 mb-1">${data.nasc}</p>
+                <p class="text-gray-100 mb-1">${respApi.nasc}</p>
                 <p class="font-bold text-indigo-400 mt-3 mb-2">Pai:</p>
-                <p class="text-gray-100 mb-1">${data.nomePai}</p>
+                <p class="text-gray-100 mb-1">${respApi.nomePai}</p>
                 <p class="font-bold text-indigo-400 mt-3 mb-2">Orgão Emissor:</p>
-                <p class="text-gray-100 mb-1">${data.orgaoEmissor}</p>
+                <p class="text-gray-100 mb-1">${respApi.orgaoEmissor}</p>
                 <p class="font-bold text-indigo-400 mt-3 mb-2">Renda:</p>
-                <p class="text-gray-100 mb-1">${data.renda}</p>
+                <p class="text-gray-100 mb-1">R$ ${respApi.renda}</p>
                 <p class="font-bold text-indigo-400 mt-3 mb-2">Sexo:</p>
-                <p class="text-gray-100 mb-1">${data.sexo}</p>
+                <p class="text-gray-100 mb-1">${respApi.sexo}</p>
                 <p class="font-bold text-indigo-400 mt-3 mb-2">Título de Eleitor:</p>
-                <p class="text-gray-100 mb-1">${data.tituloEleitor}</p>
+                <p class="text-gray-100 mb-1">${respApi.tituloEleitor}</p>
                 <p class="font-bold text-indigo-400 mt-3 mb-2">UF Emissão:</p>
-                <p class="text-gray-100 mb-1">${data.ufEmissao}</p>
+                <p class="text-gray-100 mb-1">${respApi.ufEmissao}</p>
 
 
               </div>
             `;
-          } else {
-            resultDiv.innerHTML = `
+        } else {
+          resultDiv.innerHTML = `
               <div class="${cardBase} border-red-600">
                 <p class="font-bold text-red-400">Retorno:</p>
-                <p class="text-red-200">${data.msg || "Erro ao consultar."}</p>
+                <p class="text-red-200">${
+                  respApi.msg || "Erro ao consultar."
+                }</p>
               </div>
             `;
-          }
         }
-      })
-      .catch((error) => {
-        errDiv.classList.remove("hidden");
-        errDiv.innerHTML = `<p class="text-red-200 font-mono">Falha na consulta. Reporte ao suporte.</p>`;
-        resultDiv.innerHTML = "";
-        console.error("Erro - Reporte no GIT:", error);
-      })
-      .finally(() => {
-        btn.disabled = false;
-        btn.innerHTML = `
+      }
+    } catch (error) {
+      errDiv.classList.remove("hidden");
+      errDiv.innerHTML = `<p class="text-red-200 font-mono">Falha na consulta. Reporte ao suporte.</p>`;
+      resultDiv.innerHTML = "";
+      console.error("Erro - Reporte no GIT:", error);
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = `
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
             <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
           </svg>`;
-      });
+    }
   } else {
     errDiv.classList.remove("hidden");
     errDiv.className =
