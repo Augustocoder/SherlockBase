@@ -26,7 +26,10 @@ function reqConsultaCNPJ($cnpj)
     if (! empty($data['nome'])) {
         json_response($data);
     }
-    json_response(['status' => 'error', 'msg' => 'CNPJ não encontrado'], 404);
+    json_response([
+        'status' => 'error',
+        'msg'    => 'CNPJ não encontrado',
+    ], 404);
 }
 
 function reqConsultaCPF($cpf)
@@ -44,23 +47,23 @@ function reqConsultaCPF($cpf)
         CURLOPT_SSL_VERIFYPEER => true,
         CURLOPT_POSTFIELDS     => $postData,
     ]);
-     $result = curl_exec($ch);
+    $result = curl_exec($ch);
     if ($result === false) {
         json_response(['status' => 'error', 'msg' => 'Falha ao consultar serviço externo.'], 502);
     }
     curl_close($ch);
     $resultToJSON = json_decode($result, true);
     if (isset($resultToJSON['status']) && $resultToJSON['status'] == 200) {
-        $nasc          = $resultToJSON['dados'][0]['NASC'] ?? 'Não informado';
-        $nome          = $resultToJSON['dados'][0]['NOME'] ?? 'Não informado';
-        $nomeMae       = $resultToJSON['dados'][0]['NOME_MAE'] ?? 'Não informado';
-        $nomePai       = $resultToJSON['dados'][0]['NOME_PAI'] ?? 'Não informado';
-        $orgaoEmissor  = $resultToJSON['dados'][0]['ORGAO_EMISSOR'] ?? 'Não informado';
-        $renda         = $resultToJSON['dados'][0]['RENDA'] ?? 'Não informado';
-        $rg            = $resultToJSON['dados'][0]['RG'] ?? 'Não informado';
-        $sexo          = $resultToJSON['dados'][0]['SEXO'] ?? 'Não informado';
-        $tituloEleitor = $resultToJSON['dados'][0]['TITULO_ELEITOR'] ?? 'Não informado';
-        $ufEmissao     = $resultToJSON['dados'][0]['UF_EMISSAO'] ?? 'Não informado';
+        $nasc          = strlen($resultToJSON['dados'][0]['NASC']) > 1 ? $resultToJSON['dados'][0]['NASC'] : 'Não informado';
+        $nome          = strlen($resultToJSON['dados'][0]['NOME']) > 1 ? $resultToJSON['dados'][0]['NOME'] : 'Não informado';
+        $nomeMae       = strlen($resultToJSON['dados'][0]['NOME_MAE']) > 1 ? $resultToJSON['dados'][0]['NOME_MAE'] : 'Não informado';
+        $nomePai       = strlen($resultToJSON['dados'][0]['NOME_PAI']) > 1 ? $resultToJSON['dados'][0]['NOME_PAI'] : 'Não informado';
+        $orgaoEmissor  = strlen($resultToJSON['dados'][0]['ORGAO_EMISSOR']) > 1 ? $resultToJSON['dados'][0]['ORGAO_EMISSOR'] : 'Não informado';
+        $renda         = strlen($resultToJSON['dados'][0]['RENDA']) > 1 ? $resultToJSON['dados'][0]['RENDA'] : 'Não informado';
+        $rg            = strlen($resultToJSON['dados'][0]['RG']) > 1 ? $resultToJSON['dados'][0]['RG'] : 'Não informado';
+        $sexo          = strlen($resultToJSON['dados'][0]['SEXO']) ? $resultToJSON['dados'][0]['SEXO'] : 'Não informado';
+        $tituloEleitor = strlen($resultToJSON['dados'][0]['TITULO_ELEITOR']) > 1 ? $resultToJSON['dados'][0]['TITULO_ELEITOR'] : 'Não informado';
+        $ufEmissao     = strlen($resultToJSON['dados'][0]['UF_EMISSAO']) > 1 ? $resultToJSON['dados'][0]['UF_EMISSAO'] : 'Não informado';
         json_response([
             'status'        => 'success',
             'cpf'           => $cpf,
@@ -77,7 +80,10 @@ function reqConsultaCPF($cpf)
         ]);
 
     } else {
-        json_response(['status' => 'error', 'msg' => 'CPF não encontrado'], 404);
+        json_response([
+            'status' => 'error',
+            'msg'    => 'CPF não encontrado',
+        ], 404);
     }
 }
 
@@ -85,19 +91,28 @@ $input    = json_decode(file_get_contents('php://input'), true);
 $cpf_cnpj = $input['cpf_cnpj'] ?? null;
 
 if (! $cpf_cnpj) {
-    json_response(['status' => 'error', 'msg' => 'CPF/CNPJ não informado'], 400);
+    json_response([
+        'status' => 'error',
+        'msg'    => 'CPF/CNPJ não informado',
+    ], 400);
 }
 
 $cpf_cnpj = filtrarCpfCnpj($cpf_cnpj);
 
 if (! ctype_digit($cpf_cnpj)) {
-    json_response(['status' => 'error', 'msg' => 'Por favor, não aceitamos letras.'], 422);
+    json_response([
+        'status' => 'error',
+        'msg'    => 'Por favor, não aceitamos letras.',
+    ], 422);
 }
 
 if (strlen($cpf_cnpj) == 14) {
     reqConsultaCNPJ($cpf_cnpj);
-} elseif (strlen($cpf_cnpj) == 11) {
+} else if (strlen($cpf_cnpj) == 11) {
     reqConsultaCPF($cpf_cnpj);
 } else {
-    json_response(['status' => 'error', 'msg' => 'Tamanho inválido para CPF ou CNPJ.'], 422);
+    json_response([
+        'status' => 'error',
+        'msg'    => 'Tamanho inválido para CPF ou CNPJ.',
+    ], 422);
 }
