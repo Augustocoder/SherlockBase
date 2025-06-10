@@ -31,7 +31,7 @@ Retorna as seguintes informações:
 - Mãe
 - Nascimento
 - Pai
-- Orgão Emissor
+- Órgão Emissor
 - Renda
 - Sexo
 - Título de Eleitor
