@@ -21,6 +21,7 @@ Você tem duas opções para instalar a ferramenta:
 2. **Usando PHP no Terminal**: Se você já tem o PHP configurado como variável de ambiente, navegue até a pasta do projeto e execute:
    ```bash
    php -S localhost:8000
+   ```
 3. **Apache ou NGINX**
 ## Funcionalidades da Consulta
 
