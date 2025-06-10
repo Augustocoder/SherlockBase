@@ -1,32 +1,35 @@
-# SherlockBase v3.0.3 
+# SherlockBase v3.0.3
 
-![ Imagem Ilustrativa da Ferramenta](https://github.com/user-attachments/assets/33d8ad81-cf57-4a81-935d-8f8ba6b4a787)
+![Imagem Ilustrativa da Ferramenta](https://github.com/user-attachments/assets/33d8ad81-cf57-4a81-935d-8f8ba6b4a787)
+
+## Sobre
+
+SherlockBase é uma aplicação web criada para consultar dados de CPF e CNPJ de forma rápida. Ela utiliza serviços públicos para obter informações cadastrais precisas e é ótima para quem deseja aprimorar técnicas de OSINT ou auxiliar processos internos de empresas.
 
 ### Aviso Legal
-**Não me responsabilizo pelo uso inadequado desta ferramenta. Esta aplicação foi criada com o propósito de auxiliar empresas e para fins de estudo.**
+**Não me responsabilizo pelo uso inadequado desta ferramenta.** Esta aplicação foi desenvolvida apenas para fins educacionais e de apoio empresarial.
 
-Essa ferramenta permite consultar informações de CNPJ e CPF, fornecendo dados precisos sobre empresas e pessoas físicas.
-É uma excelente opção para ajudar você e o seu negócio.
-
-
-## Precisa de Suporte?
-Entre em contato comigo pelo e-mail: [suporte@augustodev.anonaddy.com](mailto:suporte@augustodev.anonaddy.com). Irei responder assim que possível.
+## Requisitos
+- PHP 7.4 ou superior
+- Servidor web (XAMPP, Apache ou Nginx)
+- Acesso à internet
 
 ## Instalação
+1. Clone ou baixe este repositório.
+2. Coloque os arquivos no diretório do seu servidor web. Em ambientes XAMPP, use a pasta `htdocs`.
 
-Você tem duas opções para instalar a ferramenta:
+Para iniciar um servidor local pelo terminal, execute:
+```bash
+php -S localhost:8000
+```
+Depois acesse `http://localhost:8000` no navegador.
 
-1. **Usando o XAMPP**: Instale o XAMPP e coloque os arquivos na pasta `htdocs`.
+## Como Usar
+Digite um CPF ou CNPJ no campo da página inicial e clique no botão de 'Busca'. Os dados serão exibidos logo abaixo do formulário.
 
-2. **Usando PHP no Terminal**: Se você já tem o PHP configurado como variável de ambiente, navegue até a pasta do projeto e execute:
-   ```bash
-   php -S localhost:8000
-   ```
-3. **Apache ou NGINX**
-## Funcionalidades da Consulta
+### Funcionalidades
 
-### Consulta de CPF
-Retorna as seguintes informações:
+#### Consulta de CPF
 - Nome
 - CPF
 - Mãe
@@ -36,30 +39,32 @@ Retorna as seguintes informações:
 - Renda
 - Sexo
 - Título de Eleitor
-- UF Emissão 
-  
-### Consulta de CNPJ
-Retorna as seguintes informações:
+- UF de Emissão
+
+#### Consulta de CNPJ
 - CNPJ
 - Razão Social
 - Capital Social
 - Situação da Empresa
-- Sócios da Empresa
+- Sócios
 - Estado
 - E-mail
 - Telefone
 
 ## Perguntas Frequentes
 
-### Onde as informações são obtidas?
-As informações são coletadas por meio da API da Receita e da Consulta Nacional.
+**De onde vêm os dados?**  
+As informações são obtidas em serviços públicos como a Receita Federal e a Consulta Nacional.
 
-### Existe algum custo para usar esta ferramenta?
-Não, esta ferramenta é totalmente gratuita e funcional, ideal para aprimorar suas técnicas de OSINT (Open Source Intelligence) ou para uso empresarial.
+**A ferramenta é gratuita?**  
+Sim. Você pode usá-la sem custos, seja para estudos ou para sua empresa.
+
+## Precisa de Suporte?
+Entre em contato pelo e-mail [suporte@augustodev.anonaddy.com](mailto:suporte@augustodev.anonaddy.com).
 
 ---
 
-Sinta-se à vontade para contribuir ou reportar quaisquer problemas!
+Sinta-se à vontade para contribuir ou reportar problemas!
 
 ---
 
