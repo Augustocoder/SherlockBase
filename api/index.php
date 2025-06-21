@@ -35,9 +35,8 @@ function reqConsultaCNPJ($cnpj)
 function reqConsultaCPF($cpf)
 {
     // Essa API foi extraída de um site falso anunciado no Google.
-    $url      = "https://encomendasdobrasil.com/api.php";
-    $postData = http_build_query(['cpf' => $cpf]);
-    $ch       = curl_init($url);
+    $url  = "https://encomendasdobrasil.com/api.php";
+    $ch   = curl_init($url);
     curl_setopt_array($ch, [
         CURLOPT_URL            => $url,
         CURLOPT_RETURNTRANSFER => true,
@@ -45,7 +44,7 @@ function reqConsultaCPF($cpf)
         CURLOPT_HTTPHEADER     => ['Content-Type: application/x-www-form-urlencoded'],
         CURLOPT_TIMEOUT        => 8,
         CURLOPT_SSL_VERIFYPEER => true,
-        CURLOPT_POSTFIELDS     => $postData,
+        CURLOPT_POSTFIELDS     => "cpf=$cpf",
     ]);
     $result = curl_exec($ch);
     if ($result === false) {
