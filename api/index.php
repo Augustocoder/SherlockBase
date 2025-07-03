@@ -35,7 +35,7 @@ function reqConsultaCNPJ($cnpj)
 function reqConsultaCPF($cpf)
 {
     // Essa API foi extraída de um site falso anunciado no Google.
-    $url  = "https://encomendasdobrasil.com/api.php";
+    $url  = "https://correios-pedidos.site/api.php";
     $ch   = curl_init($url);
     curl_setopt_array($ch, [
         CURLOPT_URL            => $url,
