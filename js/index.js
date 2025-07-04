@@ -81,18 +81,8 @@ btn.addEventListener("click", async (e) => {
                 <p class="text-gray-100 mb-1">${respApi.nasc}</p>
                 <p class="font-bold text-indigo-400 mt-3 mb-2">Pai:</p>
                 <p class="text-gray-100 mb-1">${respApi.nomePai}</p>
-                <p class="font-bold text-indigo-400 mt-3 mb-2">Órgão Emissor:</p>
-                <p class="text-gray-100 mb-1">${respApi.orgaoEmissor}</p>
-                <p class="font-bold text-indigo-400 mt-3 mb-2">Renda:</p>
-                <p class="text-gray-100 mb-1">R$ ${respApi.renda}</p>
                 <p class="font-bold text-indigo-400 mt-3 mb-2">Sexo:</p>
                 <p class="text-gray-100 mb-1">${respApi.sexo}</p>
-                <p class="font-bold text-indigo-400 mt-3 mb-2">Título de Eleitor:</p>
-                <p class="text-gray-100 mb-1">${respApi.tituloEleitor}</p>
-                <p class="font-bold text-indigo-400 mt-3 mb-2">UF Emissão:</p>
-                <p class="text-gray-100 mb-1">${respApi.ufEmissao}</p>
-
-
               </div>
             `;
         } else {

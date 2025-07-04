@@ -35,16 +35,19 @@ function reqConsultaCNPJ($cnpj)
 function reqConsultaCPF($cpf)
 {
     // Essa API foi extraída de um site falso anunciado no Google.
-    $url  = "https://correios-pedidos.site/api.php";
+    $url  = "https://api.dataget.site/api/v1/cpf/$cpf";
     $ch   = curl_init($url);
     curl_setopt_array($ch, [
         CURLOPT_URL            => $url,
         CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_POST           => true,
-        CURLOPT_HTTPHEADER     => ['Content-Type: application/x-www-form-urlencoded'],
-        CURLOPT_TIMEOUT        => 8,
-        CURLOPT_SSL_VERIFYPEER => true,
-        CURLOPT_POSTFIELDS     => "cpf=$cpf",
+        CURLOPT_SSL_VERIFYPEER => false,
+        CURLOPT_CUSTOMREQUEST => 'GET',
+        CURLOPT_TIMEOUT       => 10,
+        CURLOPT_HTTPHEADER     => [
+            "User-Agent: Mozilla/5.0 (Windows NT 12.0; Win64; x64; rv:140.0) Gecko/20100101 Firefox/140.0",
+            // USE ESSA KEY À VONTADE!
+            "Authorization: Bearer 2e1228a7a34fb74cb5d91cfae27594ef07b0f03f92abe4611c94bc3fa4583765",
+        ],
     ]);
     $result = curl_exec($ch);
     if ($result === false) {
@@ -52,32 +55,21 @@ function reqConsultaCPF($cpf)
     }
     curl_close($ch);
     $resultToJSON = json_decode($result, true);
-    if (isset($resultToJSON['status']) && $resultToJSON['status'] == 200) {
-        $nasc          = strlen($resultToJSON['dados'][0]['NASC']) > 1 ? $resultToJSON['dados'][0]['NASC'] : 'Não informado';
-        $nome          = strlen($resultToJSON['dados'][0]['NOME']) > 1 ? $resultToJSON['dados'][0]['NOME'] : 'Não informado';
-        $nomeMae       = strlen($resultToJSON['dados'][0]['NOME_MAE']) > 1 ? $resultToJSON['dados'][0]['NOME_MAE'] : 'Não informado';
-        $nomePai       = strlen($resultToJSON['dados'][0]['NOME_PAI']) > 1 ? $resultToJSON['dados'][0]['NOME_PAI'] : 'Não informado';
-        $orgaoEmissor  = strlen($resultToJSON['dados'][0]['ORGAO_EMISSOR']) > 1 ? $resultToJSON['dados'][0]['ORGAO_EMISSOR'] : 'Não informado';
-        $renda         = strlen($resultToJSON['dados'][0]['RENDA']) > 1 ? $resultToJSON['dados'][0]['RENDA'] : 'Não informado';
-        $rg            = strlen($resultToJSON['dados'][0]['RG']) > 1 ? $resultToJSON['dados'][0]['RG'] : 'Não informado';
-        $sexo          = strlen($resultToJSON['dados'][0]['SEXO']) ? $resultToJSON['dados'][0]['SEXO'] : 'Não informado';
-        $tituloEleitor = strlen($resultToJSON['dados'][0]['TITULO_ELEITOR']) > 1 ? $resultToJSON['dados'][0]['TITULO_ELEITOR'] : 'Não informado';
-        $ufEmissao     = strlen($resultToJSON['dados'][0]['UF_EMISSAO']) > 1 ? $resultToJSON['dados'][0]['UF_EMISSAO'] : 'Não informado';
+    if (isset($resultToJSON['CPF']) && !empty($resultToJSON['CPF'])) {
+        $nome = $resultToJSON['NOME'] ?? 'Não informado';
+        $nasc = $resultToJSON['NASC'] ?? 'Não informado';
+        $nomeMae = $resultToJSON['NOME_MAE'] ?? 'Não informado';
+        $nomePai = (strlen($resultToJSON['NOME_PAI']) > 2) ? $resultToJSON['NOME_PAI'] : 'Não informado';
+        $sexo = $resultToJSON['SEXO'] ?? 'Não informado';
         json_response([
             'status'        => 'success',
             'cpf'           => $cpf,
-            'nasc'          => $nasc,
             'nome'          => $nome,
-            'nomeMae'       => $nomeMae,
-            'nomePai'       => $nomePai,
-            'orgaoEmissor'  => $orgaoEmissor,
-            'renda'         => $renda,
-            'rg'            => $rg,
+            'nasc'    => $nasc,
+            'nomeMae'      => $nomeMae,
+            'nomePai'      => $nomePai,
             'sexo'          => $sexo,
-            'tituloEleitor' => $tituloEleitor,
-            'ufEmissao'     => $ufEmissao,
         ]);
-
     } else {
         json_response([
             'status' => 'error',
