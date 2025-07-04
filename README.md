@@ -1,4 +1,4 @@
-# SherlockBase v3.0.4
+# SherlockBase v3.0.5
 
 ![Imagem Ilustrativa da Ferramenta](https://github.com/user-attachments/assets/33d8ad81-cf57-4a81-935d-8f8ba6b4a787)
 
@@ -35,11 +35,8 @@ Digite um CPF ou CNPJ no campo da página inicial e clique no botão de 'Busca'.
 - Mãe
 - Nascimento
 - Pai
-- Órgão Emissor
-- Renda
 - Sexo
-- Título de Eleitor
-- UF de Emissão
+
 
 #### Consulta de CNPJ
 - CNPJ
