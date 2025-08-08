@@ -1,4 +1,4 @@
-# SherlockBase v3.0.5
+# SherlockBase v3.0.5 (API Em Manutenção)
 
 ![Imagem Ilustrativa da Ferramenta](https://github.com/user-attachments/assets/33d8ad81-cf57-4a81-935d-8f8ba6b4a787)
 
